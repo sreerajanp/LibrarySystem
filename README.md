@@ -43,7 +43,7 @@
 
  ## Get the code from GitHub
 
-    👉 Clone or download the project repository.
+    👉 Clone or download the project repository 'https://github.com/sreerajanp/LibrarySystem.git'.
     👉 Open the solution file `LibrarySystem.sln` using **Visual Studio 2022**.
     👉 Ensure you have the required .NET SDK installed (version 9.0 or higher).
 
