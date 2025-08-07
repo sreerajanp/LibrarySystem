@@ -1,0 +1,37 @@
+syntax = "proto3";
+package library.book;
+
+message BookDetail {
+	int32 id = 1;
+	string title = 2;
+	string author = 3;
+	int32 totalBorrows = 4;
+}
+
+message IdRequest{
+	int32 id = 1;
+}
+
+message BookAvailabilityResponse {
+	int32 id = 1;
+	int32 borrowedCopies = 2;
+	int32 availableCopies = 3;
+	string message = 4;
+}
+
+message TopNRequest{
+	int32 limit=1;
+}
+message BooksResponse {
+	string message = 1;
+	repeated BookDetail bookDetails = 2;
+}
+
+service BookService{
+
+	// What are the most borrowed books?
+	rpc GetMostBorrowedBooks(TopNRequest) returns (BooksResponse);
+
+	// How many copies of a specific book are borrowed vs available?
+	rpc GetBookAvailability(IdRequest) returns (BookAvailabilityResponse);
+}

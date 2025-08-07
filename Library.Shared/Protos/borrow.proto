@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package library.borrow;
+
+message RelatedBook {
+  int32 bookId = 1;
+  string title = 2;
+  string author = 3;
+  int32 commonBorrowerCount = 4;
+}
+
+message BookIdRequest {
+  int32 bookId = 1;
+}
+
+message RelatedBooksResponse {
+	string message = 1;
+	repeated RelatedBook relatedBooks = 2;
+}
+
+message ReadingRateResponse {
+  int32 bookId = 1;
+  string title = 2;
+  double averagePagesPerDay = 3;
+  int32 borrowCount = 4;
+  string message = 5;
+}
+
+service BorrowService {
+  // What other books were borrowed by individuals who borrowed a particular book?
+  rpc GetRelatedBooks(BookIdRequest) returns (RelatedBooksResponse);
+
+  // Estimate the reading rate (pages/day) for a book based on borrow and return times
+  rpc EstimateReadingRate(BookIdRequest) returns (ReadingRateResponse);
+}

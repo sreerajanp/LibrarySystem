@@ -1,0 +1,37 @@
+@Library.Web.Api_HostAddress = http://localhost:5057
+
+GET {{Library.Web.Api_HostAddress}}/api/Book/ping/
+Accept: application/json
+
+###
+
+GET {{Library.Web.Api_HostAddress}}/api/Book/most-borrowed/2/
+Accept: application/json
+###
+
+GET {{Library.Web.Api_HostAddress}}/api/Book/availability/2/
+Accept: application/json
+###
+
+GET {{Library.Web.Api_HostAddress}}/api/Borrower/ping/
+Accept: application/json
+
+###
+GET {{Library.Web.Api_HostAddress}}/api/Borrower/related-books/2/
+Accept: application/json
+
+###
+GET {{Library.Web.Api_HostAddress}}/api/Borrower/estimate-reading-rate/2/
+Accept: application/json
+
+###
+GET {{Library.Web.Api_HostAddress}}/api/User/ping/
+Accept: application/json
+
+###
+GET {{Library.Web.Api_HostAddress}}/api/User/most-borrowed-users?startDate=2025-07-08%2014%3A28%3A19.1638368%2B02%3A00&endDate=2025-08-08%2014%3A28%3A19.1638368%2B02%3A00&limit=2
+Accept: application/json
+
+###
+GET {{Library.Web.Api_HostAddress}}/api/User/user-borrowed-books/2?startDate=2025-07-08%2014%3A28%3A19.1638368%2B02%3A00&endDate=2025-08-08%2014%3A28%3A19.1638368%2B02%3A00
+Accept: application/json

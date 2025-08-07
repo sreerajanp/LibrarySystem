@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package library.user;
+
+import "google/protobuf/timestamp.proto";
+
+message UserDetails {
+  int32 id = 1;
+  string name = 2;
+}
+
+message UserBookDetail {
+	string userName = 1;
+	int32 bookId = 2;
+	string bookTitle = 3;
+	string bookAuthor = 4;
+}
+
+message UserBorrowRequest {
+  google.protobuf.Timestamp startDate = 1;
+  google.protobuf.Timestamp endDate = 2;
+  int32 limit = 3;
+}
+
+message UserBorrowDetails {
+	int32 userId = 1;
+	string userName = 2;
+	int32 borrowCount = 3;
+}
+
+message UserBorrowResponse {
+	string message = 1;
+	repeated UserBorrowDetails userBorrowDetails = 2;
+}
+
+message UserBorrowedBooksRequest {
+	int32 userId = 1;
+	google.protobuf.Timestamp startDate = 2;
+	google.protobuf.Timestamp endDate = 3;
+}
+
+message UserBorrowedBooksResponse {
+	string message = 1;
+	repeated UserBookDetail userBookDetail = 2;
+}
+
+service UserService {
+  // Which users have borrowed the most books within a given time frame?
+  rpc GetUsersWithMostBorrows(UserBorrowRequest) returns (UserBorrowResponse);
+
+  // What books has a particular user borrowed during a specified period?
+  rpc GetBooksBorrowedByUser(UserBorrowedBooksRequest) returns (UserBorrowedBooksResponse);
+}
